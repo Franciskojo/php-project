@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PaymentSimulationRequest;
 use App\Http\Resources\OrderResource;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
@@ -31,10 +32,8 @@ class OrderController extends Controller
     }
 
     // POST /api/payment/simulate
-    public function simulatePayment(Request $request) {
-        $request->validate(['order_id' => 'required|exists:orders,id']);
+   public function simulatePayment(PaymentSimulationRequest $request) {
         $order = $this->orderService->simulatePayment($request->order_id);
-
         return response()->json([
             'payment_successful' => true,
             'order' => new OrderResource($order)
