@@ -39,11 +39,11 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::patch("products/{product}", [ProductController::class, 'update']);
     Route::delete("products/{product}", [ProductController::class, 'destroy']);
 
-    // Stock Management (cleaner)
+    // Stock Management
     Route::post('/products/restock', [StockController::class, 'restock']);
 
     // Admin view all orders
-    Route::get('/orders/all', [OrderController::class, 'allOrders']);
+    Route::get("orders/all", [OrderController::class, 'allOrders']);
 });
 
 
@@ -60,7 +60,7 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::post("cart/checkout", [CartController::class, 'checkout']);
 
     // USER ORDER HISTORY
-    Route::get('/orders', [OrderController::class, 'userOrders']);
+    Route::get("orders", [OrderController::class, 'userOrders']);
 
     // PAYMENT SIMULATION
     Route::post("payment/simulate", [OrderController::class, 'simulatePayment']);

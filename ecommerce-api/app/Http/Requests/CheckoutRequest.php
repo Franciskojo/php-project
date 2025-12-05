@@ -24,19 +24,20 @@ class CheckoutRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'payment_method' => 'required|in:credit_card,mobile_money,cash_on_delivery',
-             'shipping_address' => 'required|string|max:255',
-            'shipping_city' => 'required|string|max:100',
-            'shipping_region' => 'required|string|max:100',
-            'shipping_phone' => 'required|string|max:20',
-            'shipping_digital_address' => 'nullable|string|max:50',
-            'shipping_address.country' => 'required|string|max:50',
+    'payment_method' => 'required|in:credit_card,mobile_money,cash_on_delivery',
+    'shipping_address' => 'required|string|max:255',
+    'shipping_city' => 'required|string|max:100',
+    'shipping_region' => 'required|string|max:100',
+    'shipping_phone' => 'required|string|max:20',
+    'shipping_digital_address' => 'nullable|string|max:50',
+    'shipping_country' => 'required|string|max:50',
 
-             // billing address fields
-            'billing_address' => 'nullable|string|max:255',
-            'billing_city' => 'nullable|string|max:100',
-            'billing_region' => 'nullable|string|max:100',
-            'billing_phone' => 'nullable|string|max:20',
-        ];
+    // billing address
+    'billing_address' => 'nullable|string|max:255',
+    'billing_city' => 'nullable|string|max:100',
+    'billing_region' => 'nullable|string|max:100',
+    'billing_phone' => 'nullable|string|max:20',
+];
+
     }
 }
